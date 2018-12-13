@@ -13,6 +13,7 @@ package cibautomationassessmentpt2;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
@@ -21,6 +22,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import org.apache.poi.ss.usermodel.Row;
+
+import org.apache.poi.ss.usermodel.Sheet;
+
+import org.apache.poi.ss.usermodel.Workbook;
+
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+/**
+ *
+ * @author tmathobela
+ */
 public class CIBAutomationAssessmentPt2 {
 
     /**
@@ -43,8 +56,24 @@ public class CIBAutomationAssessmentPt2 {
            System.out.println("false");
         }    
        
-//       File FilePath = new File("C:\\Users\\tmathobela\\Downloads\\UserDetails.xlsx");
-//       FileInputStream fs = new FileInputStream(FilePath);
+       File FilePath = new File("C:\\Users\\tmathobela\\Downloads\\UserDetails.xlsx");
+       FileInputStream fs = new FileInputStream(FilePath);
+       Workbook workbook = new XSSFWorkbook();
+       Sheet sheet = workbook.getSheet("Sheet1");
+//       Iterator<Row> iterator = sheet.iterator();
+       Row row = sheet.
+       System.out.println(row.getCell(1));
+       
+       
+       
+//       int i = 0;
+//       while (iterator.hasNext()) {
+//           
+//           sheet.getRow(i).g
+//            
+//       }
+
+       
      
         driver.findElement(By.xpath("//button[contains(text(), 'Add User')]")).click();
        
@@ -87,6 +116,8 @@ public class CIBAutomationAssessmentPt2 {
         
      
     }
+    
+    
        
 
 }
