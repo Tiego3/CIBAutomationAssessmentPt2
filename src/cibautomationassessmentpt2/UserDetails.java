@@ -5,24 +5,36 @@
  */
 package cibautomationassessmentpt2;
 
+//import java.util.ArrayList;
+
 /**
  *
  * @author tmathobela
  */
 public class UserDetails {
     
-    String firstName, lastName, userName , password,  customer,  role,  email,  cell;
+    String firstName, lastName, userName , password,  role,  email,  cell;
+    int customer;
     
-    UserDetails(String firstName, String lastName, String userName, String password, String customer, String role, String email, String cell){
-     
+    UserDetails(String firstName, String lastName, String userName, String password, int customer, String role, String email, String cell){
         
+       
        this.firstName = firstName;
-       this.cell = cell;
+       this.lastName = lastName;
+       this.userName = userName;
+       this.role = role;
        this.customer = customer;
        this.email = email;
-       
-       
-        
-        
+       this.password = password;
+       this.cell = cell;
+      
     }
+    
 }
+
+
+
+
+
+
+

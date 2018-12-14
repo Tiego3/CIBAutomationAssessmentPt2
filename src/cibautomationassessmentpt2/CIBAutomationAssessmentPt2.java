@@ -10,104 +10,46 @@ package cibautomationassessmentpt2;
  * @author tmathobela
  */
 
+
 import java.io.File;
-import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
+
 
 /**
  *
  * @author tmathobela
  */
 public class CIBAutomationAssessmentPt2 {
-WebDriver driver = new ChromeDriver();
+    
+    WebDriver driver = new ChromeDriver();
     /**
      * @param args the command line arguments
      * @throws java.lang.Exception
      */
+   
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
         
-//        Runtime.getRuntime().exec("cmd /c start \"\" build.bat");
+        //set Chromedriver to enable running on chrome
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\tmathobela\\Downloads\\chromedriver_win32\\chromedriver.exe");
-       
-        WebDriver driver = new ChromeDriver();
+             
+        //initialise CIBLandingPage class
+        CIBLandingPage cib = new CIBLandingPage();   
         
-        driver.navigate().to("http://www.way2automation.com/angularjs-protractor/webtables/");
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);	    
-        driver.manage().window().maximize();
-
-        if (!driver.findElement(By.xpath("//table/thead/tr/th/span[text()='User Name']")).isDisplayed()) {
-           System.out.println("false");
-        }    
-       
-//       File FilePath = new File("C:\\Users\\tmathobela\\Downloads\\UserDetails.xlsx");
-//       FileInputStream fs = new FileInputStream(FilePath);
-//       Workbook workbook = Workbook.
-//       Sheet sheet = workbook.getSheet("Sheet1");
-////       Iterator<Row> iterator = sheet.iterator();
-//       Row row = sheet.
-//       System.out.println(row.getCell(1));
-       
-       
-       
-//       int i = 0;
-//       while (iterator.hasNext()) {
-//           
-//           sheet.getRow(i).g
-//            
-//       }
-
-       
-     
-      
-       
-        driver.findElement(By.xpath("//input[@name='FirstName']")).sendKeys("FName");
-       
-        driver.findElement(By.xpath("//input[@name='LastName']")).sendKeys("LName");    
-        driver.findElement(By.xpath("//input[@name='UserName']")).sendKeys("LName");
-        driver.findElement(By.xpath("//input[@name='Password']")).sendKeys("LName");
-        driver.findElement(By.xpath("//input[@value = 15]")).click();
-        WebElement el = driver.findElement(By.xpath("//select[@name='RoleId']"));
-        Select sel = new Select(el);
-        sel.selectByVisibleText("Customer");
-        driver.findElement(By.xpath("//input[@name='Email']")).sendKeys("LName@mail.com");
-        driver.findElement(By.xpath("//input[@name='Mobilephone']")).sendKeys("LName");
-
-        driver.findElement(By.xpath("//button[text()= 'Save']")).click();
-       boolean value = true;
-        List<String> val =  new ArrayList<>();
-        val.add("FName");
-         val.add("jjj");
-         
-        List<WebElement> cells = driver.findElements(By.xpath("//td[@class='smart-table-data-cell']"));
-
-        for(int i=0; i<val.size(); i++ ){
-            for (WebElement cell : cells) {
-                if (cell.getText().equals(val.get(i))){
-                    value = true;
-                   break;
-                }
-                else {
-                    value = false;
-                }
-                
-            }
-            if(!(value==true)){
-                System.out.print("false");
-            } 
-        }
-            
+        // call navigate method - driver object to navigate to webpage - wait for page to load - and maximize window
+        cib.navigate();
         
-     
-    }       
+//         call findUserTable method- To verify if table exist
+        cib.findUserTable();
 
+        //call insertData method - To insert data into fields
+        cib.insertData();
+        
+        //Close app
+        cib.closeApp();
+     
+    }    
+    
 }
-
