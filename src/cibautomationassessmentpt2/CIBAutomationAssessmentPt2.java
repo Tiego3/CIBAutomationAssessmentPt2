@@ -22,20 +22,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import org.apache.poi.ss.usermodel.Row;
-
-import org.apache.poi.ss.usermodel.Sheet;
-
-import org.apache.poi.ss.usermodel.Workbook;
-
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 /**
  *
  * @author tmathobela
  */
 public class CIBAutomationAssessmentPt2 {
-
+WebDriver driver = new ChromeDriver();
     /**
      * @param args the command line arguments
      * @throws java.lang.Exception
@@ -56,13 +48,13 @@ public class CIBAutomationAssessmentPt2 {
            System.out.println("false");
         }    
        
-       File FilePath = new File("C:\\Users\\tmathobela\\Downloads\\UserDetails.xlsx");
-       FileInputStream fs = new FileInputStream(FilePath);
-       Workbook workbook = new XSSFWorkbook();
-       Sheet sheet = workbook.getSheet("Sheet1");
-//       Iterator<Row> iterator = sheet.iterator();
-       Row row = sheet.
-       System.out.println(row.getCell(1));
+//       File FilePath = new File("C:\\Users\\tmathobela\\Downloads\\UserDetails.xlsx");
+//       FileInputStream fs = new FileInputStream(FilePath);
+//       Workbook workbook = Workbook.
+//       Sheet sheet = workbook.getSheet("Sheet1");
+////       Iterator<Row> iterator = sheet.iterator();
+//       Row row = sheet.
+//       System.out.println(row.getCell(1));
        
        
        
@@ -75,7 +67,7 @@ public class CIBAutomationAssessmentPt2 {
 
        
      
-        driver.findElement(By.xpath("//button[contains(text(), 'Add User')]")).click();
+      
        
         driver.findElement(By.xpath("//input[@name='FirstName']")).sendKeys("FName");
        
@@ -115,10 +107,7 @@ public class CIBAutomationAssessmentPt2 {
             
         
      
-    }
-    
-    
-       
+    }       
 
 }
 
