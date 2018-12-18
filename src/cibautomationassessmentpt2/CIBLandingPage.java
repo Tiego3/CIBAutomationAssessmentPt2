@@ -8,11 +8,15 @@ package cibautomationassessmentpt2;
 //import com.relevantcodes.extentreports.ExtentReports;
 //import com.relevantcodes.extentreports.ExtentTest;
 //import com.relevantcodes.extentreports.LogStatus;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import org.apache.poi.hslf.model.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 //import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -32,7 +36,9 @@ public class CIBLandingPage {
    
     String extentReportFile = System.getProperty("user.dir") + "\\extentReportFile.html";
     String extentReportImage = System.getProperty("user.dir") + "\\extentReportImage.png";
-
+    
+//    Workbook workbook;
+//     Sheet sheet;    
    // ExtentReports extentRp = new ExtentReports(extentReportFile,false);
   //  ExtentTest extentTest; 
 
@@ -40,14 +46,21 @@ public class CIBLandingPage {
     UserDetails user1 = new UserDetails("FName1","LName1","User1","Pass1",15,"Admin","admin@mail.com","082555");
     UserDetails user2 = new UserDetails("FName2","LName2","User2","Pass2",16,"Customer","customer@mail.com","083444");
     
+    // Creating a Workbook from an Excel file (.xls or .xlsx)
     
-    public void navigate(){
+    
+    public void navigate() throws Exception{
        //  extentRp.startTest("CIB Automation Assessment Pt2");
          driver.navigate().to("http://www.way2automation.com/angularjs-protractor/webtables/");
          driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);	    
          driver.manage().window().maximize();
     }
     
+//    public void getExcelFile() throws Exception{
+//       workbook = WorkbookFactory.create(new File("C:\\Users\\tmathobela\\Downloads\\UserDetails.xlsx"));
+//       sheet =  (Sheet) workbook.getSheetAt(0);
+//    }
+//    
     public void addButton(){
         driver.findElement(By.xpath("//button[contains(text(), 'Add User')]")).click();
     }
@@ -133,9 +146,7 @@ public class CIBLandingPage {
             //Check if value is added by comparing the data from the assigned constructors to the list of values in the table
             boolean value = true;
             List<WebElement> cells = driver.findElements(By.xpath("//td[@class='smart-table-data-cell'][1]"));
-            cells.size();
-            userdet.size();
-            
+          
             for(int j=0; j<userdet.size(); j++ ){
                 for (WebElement cell : cells) {
                    if (cell.getText().contains(userdet.get(j).toString())){
