@@ -5,15 +5,15 @@
  */
 package cibautomationassessmentpt2;
 
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
+//import com.relevantcodes.extentreports.ExtentReports;
+//import com.relevantcodes.extentreports.ExtentTest;
+//import com.relevantcodes.extentreports.LogStatus;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-import org.junit.Test;
+//import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -132,7 +132,10 @@ public class CIBLandingPage {
             
             //Check if value is added by comparing the data from the assigned constructors to the list of values in the table
             boolean value = true;
-            List<WebElement> cells = driver.findElements(By.xpath("//td[@class='smart-table-data-cell']"));
+            List<WebElement> cells = driver.findElements(By.xpath("//td[@class='smart-table-data-cell'][1]"));
+            cells.size();
+            userdet.size();
+            
             for(int j=0; j<userdet.size(); j++ ){
                 for (WebElement cell : cells) {
                    if (cell.getText().contains(userdet.get(j).toString())){
